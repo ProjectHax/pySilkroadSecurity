@@ -30,7 +30,9 @@ Fedora 20
 
 Arch
 ----
+
 Make sure you have `base-devel` already installed.
+
 1. pacman -Syu
 2. pacman -S python3 boost git
 3. git clone https://github.com/ProjectHax/pySilkroadSecurity.git
@@ -54,8 +56,8 @@ This project accepts connections on TCP port 15779 and will create a proxy betwe
 Usage in Your Own Project
 -------------------------
 Copy pySilkroadSecurity.so and stream.py to your own project folder and import them like so:
-`from pySilkroadSecurity import SilkroadSecurity
-from stream import *`
+* `from pySilkroadSecurity import SilkroadSecurity`
+* `from stream import *`
 
 Warnings
 --------
