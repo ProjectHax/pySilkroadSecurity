@@ -47,11 +47,11 @@ Installation
 
 Examples
 --------
-** pySilkroadStats.py **
+**pySilkroadStats.py**
 
 This small project shows you how the SilkroadSecurity API is to be used from Python. It will connect to iSRO and display the server list. This can be easily added to by adding a few lines to log into the servers and join the game world.
 
-** pySilkroadProxy.py **
+**pySilkroadProxy.py**
 
 This project accepts connections on TCP port 15779 and will create a proxy between the Silkroad client and the Silkroad game servers. This will allow you to view all packets going to and from Silkroad. This project can also be easily modified to filter packets for a private server; although, I would recommend rewriting the network code to not use select() if you end up needing to handle more than 100 simultaneous connections.
 
