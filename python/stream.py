@@ -90,7 +90,7 @@ class stream_reader(object):
 
 	def read_int64(self):
 		if self.index + 8 > self.size:
-			raise Exception('read_int64 - past end of stream')
+			raise Exception('past end of stream')
 		unpacked = struct.unpack_from('q', self.data, self.index)[0]
 		self.index += 8
 		return unpacked
@@ -165,7 +165,7 @@ class stream_writer(object):
 		if type(data) == list:
 			self.data = array.array('B', data)
 		elif type(data) != array.array:
-			raise Exception('stream_writer - incorrect data type was used to initialize the class')
+			raise Exception('incorrect data type was used to initialize the class')
 		else:
 			self.data = data
 
@@ -173,7 +173,7 @@ class stream_writer(object):
 		if type(data) == list:
 			self.data = array.array('B', data)
 		elif type(data) != array.array:
-			raise Exception('reset - incorrect data type was used to initialize the class')
+			raise Exception('incorrect data type was used to reset the class')
 		else:
 			self.data = data
 
@@ -194,17 +194,17 @@ class stream_writer(object):
 
 	def seek_forward(self, count):
 		if self.index + count > self.size:
-			raise Exception('seek_forward - index would be past end of stream')
+			raise Exception('index would be past end of stream')
 		self.index += count
 
 	def seek_backward(self, count):
 		if self.index - count < 0:
-			raise Exception('seek_backward - index would be < 0 if seeked further back')
+			raise Exception('index would be < 0 if seeked further back')
 		self.index -= count
 
 	def seek_set(self, index):
 		if index > self.size or index < 0:
-			raise Exception('seek_set - invalid index')
+			raise Exception('invalid index')
 		self.index = index
 
 	def seek_end(self):
