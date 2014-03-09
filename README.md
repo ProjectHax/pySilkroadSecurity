@@ -41,6 +41,10 @@ Make sure you have `base-devel` already installed.
 6. cd ../python/
 7. python pySilkroadStats.py
 
+RaspberryPi (Raspbian)
+----------------------
+1. Follow the Debian 7 guide but use a single thread to compile instead of 4.
+
 Installation
 ------------
 `make install` will copy the compiled library to the python folder so you can run the examples more easily.

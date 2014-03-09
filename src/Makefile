@@ -22,6 +22,8 @@ arch: CFLAGS += -I/usr/include/python3.3m
 arch: LDFLAGS += -lboost_python3 -lpython3
 arch: all
 
+raspbian: debian
+
 all: pySilkroadSecurity
 
 pySilkroadSecurity: main.o blowfish.o silkroad_security.o stream_utility.o
