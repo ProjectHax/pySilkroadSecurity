@@ -9,22 +9,16 @@ class stream_reader(object):
 	size = 0
 
 	def __init__(self, data, index=0):
-		if type(data) == list:
-			self.data = array.array('B', data)
-		elif type(data) != array.array:
-			raise Exception('incorrect data type was used to initialize the class')
-		else:
-			self.data = data
-		self.size = self.data.__len__()
-		self.seek_set(index)
+		self.reset(data, index)
 
 	def reset(self, data, index=0):
-		if type(data) == list:
-			self.data = array.array('B', data)
-		elif type(data) != array.array:
-			raise Exception('incorrect data type was used to reset the class')
-		else:
+		if type(data) == array.array:
 			self.data = data
+		elif type(data) == list:
+			self.data = array.array('B', data)
+		else:
+			raise Exception('incorrect data type was used to reset the class')
+
 		self.size = self.data.__len__()
 		self.seek_set(index)
 
@@ -161,21 +155,18 @@ class stream_writer(object):
 	index = 0
 	size = 0
 
-	def __init__(self, data=array.array('B')):
-		if type(data) == list:
-			self.data = array.array('B', data)
-		elif type(data) != array.array:
-			raise Exception('incorrect data type was used to initialize the class')
-		else:
-			self.data = data
+	def __init__(self, data=None):
+		self.reset(data)
 
-	def reset(self, data=array.array('B')):
-		if type(data) == list:
-			self.data = array.array('B', data)
-		elif type(data) != array.array:
-			raise Exception('incorrect data type was used to reset the class')
-		else:
+	def reset(self, data=None):
+		if type(data) == array.array:
 			self.data = data
+		elif type(data) == list:
+			self.data = array.array('B', data)
+		elif data == None:
+			self.data = array.array('B')
+		else:
+			raise Exception('incorrect data type was used to reset the class')
 
 		self.size = self.data.__len__()
 		self.seek_end()
