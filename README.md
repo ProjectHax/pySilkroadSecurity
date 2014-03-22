@@ -63,9 +63,10 @@ Usage in Your Own Project
 -------------------------
 Copy pySilkroadSecurity.so and stream.py to your own project folder and import them like so:
 
-`from pySilkroadSecurity import SilkroadSecurity`
-
-`from stream import *`
+```
+from pySilkroadSecurity import SilkroadSecurity
+from stream import *
+```
 
 Warnings
 --------
