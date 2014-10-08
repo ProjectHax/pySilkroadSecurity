@@ -16,4 +16,10 @@ link_directories(${PYTHON_LIBRARIES})
 
 add_library(pySilkroadSecurity SHARED src/main.cpp src/SilkroadSecurity/blowfish src/SilkroadSecurity/silkroad_security src/SilkroadSecurity/stream_utility)
 target_link_libraries(pySilkroadSecurity ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
+
 set_target_properties(pySilkroadSecurity PROPERTIES PREFIX "")
+
+if (APPLE)
+    set_property(TARGET pySilkroadSecurity PROPERTY OUTPUT_NAME "pySilkroadSecurity.so")
+    set_property(TARGET pySilkroadSecurity PROPERTY SUFFIX "")
+endif()
