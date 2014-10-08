@@ -6,7 +6,7 @@ pySilkroadSecurity exposes Drew's SilkroadSecurity API to Python 3.2 and above. 
 Requirements
 ------------
 
-1. Linux
+1. Linux or Mac OSX
 2. Python 3.2+
 3. boost
 4. git
