@@ -26,7 +26,7 @@ class Silkroad(object):
 	security = None
 
 	def __init__(self):
-		''''''
+		pass
 
 	def connect(self, host, port):
 		self.close()
@@ -79,7 +79,7 @@ class Silkroad(object):
 				self.s = None
 				self.security = None
 			except:
-				''''''
+				pass
 
 def HandlePacket_Joymax(joymax, silkroad, packet):
 
@@ -200,7 +200,7 @@ def main():
 
 			sleep(0.01)
 	except KeyboardInterrupt:
-		''''''
+		pass
 
 	return 0
 
