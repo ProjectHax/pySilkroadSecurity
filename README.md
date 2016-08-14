@@ -51,10 +51,10 @@ This will be a complete guide since the steps are quite different for compiling.
 
 1. `brew install boost`
 2. `brew install python3`
-3. `brew install boost-python --with-python3`
+3. `brew install boost-python --with-python3 --c++11`
 4. `git clone https://github.com/ProjectHax/pySilkroadSecurity.git`
 5. `cd pySilkroadSecurity/`
-6. ```cmake -DPYTHON_INCLUDE_DIR=`python3-config --prefix`/include/python3.4m -DPYTHON_LIBRARY=`python3-config --prefix`/lib/libpython3.4m.dylib -DPython_FRAMEWORKS=`python3-config --prefix````
+6. ```cmake -DPYTHON_INCLUDE_DIR=`python3-config --prefix`/include/python3.5m -DPYTHON_LIBRARY=`python3-config --prefix`/lib/libpython3.5m.dylib -DPython_FRAMEWORKS=`python3-config --prefix` ..```
 7. `make -j4`
 8. `cd python/`
 9. `python3 pySilkroadStats.py`
