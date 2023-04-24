@@ -1,4 +1,4 @@
-#include "stream_utility.h"
+#include "pch.h"
 
 //-----------------------------------------------------------------------------
 
@@ -188,24 +188,6 @@ std::string StreamUtility::Read_Ascii(int32_t count)
 	return str;
 }
 
-std::wstring StreamUtility::Read_AsciiToUnicode(int32_t count)
-{
-	if(count == 0)
-	{
-		return L"";
-	}
-
-	std::string str;
-	str.resize(count);
-	Read< char >(&str[0], count);
-	if(m_read_error)
-	{
-		return L"";
-	}
-
-	return boost::str(boost::wformat(L"%s") % str.c_str());
-}
-
 std::wstring StreamUtility::Read_Unicode(int32_t count)
 {
 	if(count == 0)
@@ -252,11 +234,6 @@ void StreamUtility::Write_Ascii(const std::string & mbs_text)
 	Write_Ascii(mbs_text.c_str(), static_cast< int32_t >(mbs_text.size()));
 }
 
-void StreamUtility::Write_AsciiToUnicode(const std::string & mbs_text)
-{
-	Write_AsciiToUnicode(mbs_text.c_str(), static_cast< int32_t >(mbs_text.size()));
-}
-
 void StreamUtility::Write_UnicodeToAscii(const std::wstring & wcs_text)
 {
 	Write_UnicodeToAscii(wcs_text.c_str(), static_cast< int32_t >(wcs_text.size() ));
@@ -270,14 +247,6 @@ void StreamUtility::Write_Unicode(const std::wstring & wcs_text)
 void StreamUtility::Write_Ascii(const char * mbs_text, int32_t count)
 {
 	Write< char >(mbs_text, count);
-}
-
-void StreamUtility::Write_AsciiToUnicode(const char * mbs_text, int32_t count)
-{
-	if(count == 0)
-		return;
-
-	Write_Unicode(boost::str(boost::wformat(L"%s") % mbs_text));
 }
 
 void StreamUtility::Write_UnicodeToAscii(const wchar_t * wcs_text, int32_t count)

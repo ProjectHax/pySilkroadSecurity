@@ -21,7 +21,7 @@ def HandlePacket(security, packet):
 			w.write_uint8(18)
 			w.write_uint16(9)
 			w.write_ascii('SR_Client')
-			w.write_uint32(432)
+			w.write_uint32(600)
 			security.Send(0x6100, w.tolist(), True)
 
 	elif packet['opcode'] == 0xA100:
@@ -30,25 +30,20 @@ def HandlePacket(security, packet):
 
 	elif packet['opcode'] == 0xA101:
 
-		entry = r.read_uint8()
-		while entry == 1:
+		while r.read_uint8() == 1:
 			r.read_uint8()
 			print(r.read_ascii(r.read_uint16()))
-			entry = r.read_uint8()
 
-		print('')
+		print()
 
-		entry = r.read_uint8()
-		while entry == 1:
+		while r.read_uint8() == 1:
 			server_id = r.read_uint16()
 
 			name = r.read_ascii(r.read_uint16())
-			capacity = r.read_float()
 			state = r.read_uint8()
+			open = r.read_uint8()
 
-			print('[%s] %f' % (name, capacity * 100))
-
-			entry = r.read_uint8()
+			print('[{}] {}'.format(name, 'Open' if open == 1 else 'Closed'))
 
 def main():
 	security = SilkroadSecurity()
@@ -92,7 +87,7 @@ def main():
 				else:
 					raise e
 	except KeyboardInterrupt:
-		''''''
+		pass
 
 	# Cleanup
 	s.shutdown(socket.SHUT_RDWR)

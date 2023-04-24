@@ -1,4 +1,4 @@
-#include "silkroad_security.h"
+#include "pch.h"
 
 //-----------------------------------------------------------------------------
 
@@ -116,11 +116,9 @@ static bool init_security_table = GenerateSecurityTable();
 
 uint64_t rng()
 {
-	boost::random_device dev;
-	boost::mt19937 randgen(dev);
-	boost::uniform_int< uint64_t > range( 0, 0xFFFFFFFFFFFFFFFF );
-	boost::variate_generator< boost::mt19937 &, boost::uniform_int< uint64_t > > die( randgen, range );
-	return die();
+	std::random_device dev;
+	std::uniform_int_distribution<uint64_t> dist(0, 0xFFFFFFFFFFFFFFFF);
+	return dist(dev);
 }
 
 //-----------------------------------------------------------------------------

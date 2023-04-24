@@ -5,19 +5,7 @@
 
 //-----------------------------------------------------------------------------
 
-#include <stdint.h>
-#include <list>
-#include <exception>
-#include <sstream>
-#include <set>
-
-#include "blowfish.h"
-#include "stream_utility.h"
-
-#include <boost/random/mersenne_twister.hpp>
-#include <boost/random/uniform_int.hpp>
-#include <boost/random/variate_generator.hpp>
-#include <boost/random/random_device.hpp>
+#include "pch.h"
 
 //-----------------------------------------------------------------------------
 

@@ -5,16 +5,7 @@
 
 //-----------------------------------------------------------------------------
 
-#include <stdint.h>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <iostream>
-#include <iomanip>
-#include <string.h>
-#include <sstream>
-
-#include <boost/format.hpp>
+#include "pch.h"
 
 //-----------------------------------------------------------------------------
 
@@ -59,15 +50,12 @@ public:
 	bool SeekRead(int32_t index, SeekDirection dir);
 	int32_t Delete(int32_t index, int32_t count);
 	std::string Read_Ascii(int32_t count);
-	std::wstring Read_AsciiToUnicode(int32_t count);
 	std::wstring Read_Unicode(int32_t count);
 	std::string Read_UnicodeToAscii(int32_t count);
 	void Write_Ascii(const std::string & mbs_text);
-	void Write_AsciiToUnicode(const std::string & mbs_text);
 	void Write_UnicodeToAscii(const std::wstring & wcs_text);
 	void Write_Unicode(const std::wstring & wcs_text);
 	void Write_Ascii(const char * mbs_text, int32_t count);
-	void Write_AsciiToUnicode(const char * mbs_text, int32_t count);
 	void Write_UnicodeToAscii(const wchar_t * wcs_text, int32_t count);
 	void Write_Unicode(const wchar_t * wcs_text, int32_t count);
 	StreamUtility Extract(int32_t index, int32_t count);

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="pch.cpp">
+      <Filter>pch</Filter>
+    </ClCompile>
+    <ClCompile Include="security\blowfish.cpp">
+      <Filter>security</Filter>
+    </ClCompile>
+    <ClCompile Include="security\silkroad_security.cpp">
+      <Filter>security</Filter>
+    </ClCompile>
+    <ClCompile Include="security\stream_utility.cpp">
+      <Filter>security</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="pch">
+      <UniqueIdentifier>{dade191b-bf78-407d-91a2-e4d2bba017e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="security">
+      <UniqueIdentifier>{67a31db0-4958-4cd8-b322-f66c226ba85c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>pch</Filter>
+    </ClInclude>
+    <ClInclude Include="security\blowfish.h">
+      <Filter>security</Filter>
+    </ClInclude>
+    <ClInclude Include="security\silkroad_security.h">
+      <Filter>security</Filter>
+    </ClInclude>
+    <ClInclude Include="security\stream_utility.h">
+      <Filter>security</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

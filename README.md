@@ -1,76 +1,48 @@
 pySilkroadSecurity
-==================
+===
 
 pySilkroadSecurity exposes Drew's SilkroadSecurity API to Python 3.2 and above. It does not implement the API in Python code.
 
-Requirements
-------------
+Windows
+---
 
-1. Linux or Mac OSX
-2. Python 3.2+
-3. boost
-4. git
-5. cmake
+Precompiled Boost.Python 1.82 and pySilkroadSecurity libs for Python 3.11.2 x64 are included for Windows in the `python` directory. You will need [vcredist x64](https://aka.ms/vs/17/release/vc_redist.x64.exe) if VS 2022 is not installed.
 
-Debian 7
---------
+1. Download and install [Python 3.x x64](https://www.python.org/downloads/)
+1. Download and extract [boost](https://www.boost.org/)
+1. Open `x86 Native Tools Command Prompt for VS 2022`
+1. Change to the extract boost directory
+1. Run `bootstrap.bat`
+1. Run `b2 -j8 --build-type=complete stage`
 
-1. apt-get update && apt-get upgrade
-2. apt-get install build-essential python3.2 python3.2-dev libboost-all-dev git cmake
-
-Ubuntu 14.04
-------------
-
-1. apt-get update && apt-get upgrade
-2. apt-get install build-essential python3-dev libboost-dev git cmake
-
-Fedora 20
----------
-
-1. yum update
-2. yum install gcc-c++ boost boost-devel boost-python3 boost-python3-devel python3-devel cmake
-
-Arch
-----
-
-Make sure you have `base-devel` already installed.
-
-1. pacman -Syu
-2. pacman -S python3 boost git cmake
-
-RaspberryPi (Raspbian)
-----------------------
-
-1. Follow the Debian 7 guide.
-2. Use a single thread to compile
-
-Mac OSX 10.11
--------------
-
-This will be a complete guide since the steps are quite different for compiling. You will need to update the Python version in the cmake string when 3.5+ is released.
-
-1. `brew install boost`
-2. `brew install python3`
-3. `brew install boost-python --with-python3 --c++11`
-4. `git clone https://github.com/ProjectHax/pySilkroadSecurity.git`
-5. `cd pySilkroadSecurity/`
-6. ```cmake -DPYTHON_INCLUDE_DIR=`python3-config --prefix`/include/python3.5m -DPYTHON_LIBRARY=`python3-config --prefix`/lib/libpython3.5m.dylib -DPython_FRAMEWORKS=`python3-config --prefix````
-7. `make -j4`
-8. `cd python/`
-9. `python3 pySilkroadStats.py`
-
-Compiling
-=========
+**Compiling**
 
 1. `git clone https://github.com/ProjectHax/pySilkroadSecurity.git`
-2. `cd pySilkroadSecurity/`
-3. `cmake .`
-4. `make -j4`
-5. `cd python/`
-6. `python3 pySilkroadStats.py`
+1. Open `pySilkroadSecurity.sln`
+1. Edit the VC++ directories for boost and Python
+1. Compile
+1. Copy `boost_python311-vc143-mt-x64-1_82.dll` from `boost/stage/lib` to the Python script folder
+1. Copy `x64/Release/pySilkroadSecurity.pyd` to your Python script folder
+
+*nix
+---
+
+1. Install cmake, boost, python3 dev packages
+1. `git clone https://github.com/ProjectHax/pySilkroadSecurity.git`
+1. `cd src`
+1. `mkdir build && cd build`
+1. `cmake ..`
+1. `make`
+
+macOS
+---
+
+1. Install [Homebrew](https://brew.sh/)
+1. `brew install python3 boost boost-python3 cmake`
+1. Follow the `*nix` steps
 
 Examples
-========
+---
 
 **pySilkroadStats.py**
 
@@ -81,7 +53,7 @@ This small project shows you how the SilkroadSecurity API is to be used from Pyt
 This project accepts connections on TCP port 15779 and will create a proxy between the Silkroad client and the Silkroad game servers. This will allow you to view all packets going to and from Silkroad. This project can also be easily modified to filter packets for a private server; although, I would recommend rewriting the network code to not use select() if you end up needing to handle more than 100 simultaneous connections.
 
 Usage in Your Own Project
--------------------------
+---
 
 Copy pySilkroadSecurity.so and stream.py to your own project folder and import them like so:
 
@@ -89,10 +61,3 @@ Copy pySilkroadSecurity.so and stream.py to your own project folder and import t
 from pySilkroadSecurity import SilkroadSecurity
 from stream import *
 ```
-
-Warnings
-========
-
-* iSRO/SilkroadR client will crash after loading the game world if HackShield is disabled using edxSilkroadLoader5 (it's missing one client patch that was added recently)
-* Stream classes have not been extensively tested/used and may have bugs
-* With some modifications it can work under Python 2.7.X (it was originally written for 2.7.X)
